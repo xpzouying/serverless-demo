@@ -41,3 +41,23 @@ wrangler deploy
 ```
 
 ![deploy](./SCR-20241222-brto.png)
+
+## 5. Github Action
+
+项目已配置了自动部署到 Cloudflare Workers 的 GitHub Actions。当代码推送到 main 分支时，会自动触发部署流程。
+
+### 配置步骤：
+
+1. 在 GitHub 仓库的 Settings -> Secrets and variables -> Actions 中添加以下 secret：
+   - `CLOUDFLARE_API_TOKEN`: 从 Cloudflare 获取的 API Token
+
+### 获取 Cloudflare API Token：
+
+1. 登录 Cloudflare Dashboard
+2. 进入 User Profile -> API Tokens
+3. 创建一个新的 Token，确保有 Workers 的部署权限
+4. 复制生成的 Token 并添加到 GitHub Secrets
+
+配置完成后，每次推送到 main 分支都会自动部署到 Cloudflare Workers。
+
+- Ref: https://github.com/cloudflare/wrangler-action
