@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     name: Deploy
     defaults:
       run:
@@ -20,6 +20,7 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: "1.23"
+          cache-dependency-path: ./cloudflare-worker/cf-worker-demo/go.sum
 
       - name: Setup TinyGo
         run: |
