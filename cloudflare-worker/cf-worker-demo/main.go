@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io"
 	"net/http"
 
@@ -8,9 +9,8 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/hello", func(w http.ResponseWriter, req *http.Request) {
-		msg := "Hello!"
-		w.Write([]byte(msg))
+	http.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprint(w, "Hello ZOUYING")
 	})
 	http.HandleFunc("/echo", func(w http.ResponseWriter, req *http.Request) {
 		io.Copy(w, req.Body)
